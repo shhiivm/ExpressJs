@@ -9,7 +9,7 @@ app.get('/',(req,res)=>{
 });
 
 app.listen(port,()=>{
-    console.log(`Listening to Express responce on port ${port}`)
+    console.log(`Listening to Express response on port ${port}`)
 })
 
 // Points to remember
