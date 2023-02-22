@@ -12,6 +12,10 @@ app.get('/contact',(req,res)=>{
     res.send("hello from contact Us page")
 })
 
+app.get('/about',(request,response)=>{
+    response.send(`This is about us page,on port ${port}` )
+})
+
 app.listen(port,()=>{
     console.log(`Listening to Express response on port ${port}`)
 })
