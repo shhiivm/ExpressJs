@@ -8,6 +8,10 @@ app.get('/',(req,res)=>{
     res.send("Hello Express from server!");
 });
 
+app.get('/contact',(req,res)=>{
+    res.send("hello from contact Us page")
+})
+
 app.listen(port,()=>{
     console.log(`Listening to Express response on port ${port}`)
 })
