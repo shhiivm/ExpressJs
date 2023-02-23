@@ -13,8 +13,10 @@ app.set('view engine','hbs')
 // app.use(express.static(staticPath))
 
 // template engine route
-app.get('',(req,res)=>{
-    res.render('index')
+app.get('/',(req,res)=>{
+    res.render('index',{
+        AccountName : "Shivam",
+    })
 })
 
 app.get('/',(req,res)=>{
