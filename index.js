@@ -33,10 +33,10 @@ app.get('/about',(req,res)=>{
 app.get('/contact',(req,res)=>{
     res.render('contact')
 })
-
-
-app.get('/',(req,res)=>{
-    res.send("Hello from home Page")
+app.get('*',(req,res)=>{
+    res.render('404',{
+        errorcompo: '404 ERROR PAGE NOT FOUND'
+    })
 })
 app.listen(port,()=>{
     console.log(`Listening to port ${port}`)
