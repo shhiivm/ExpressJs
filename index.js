@@ -1,6 +1,7 @@
 const path = require('path')
 const express = require('express');
 const hbs = require('hbs');
+const requests = require('requests')
 
 const app = express();
 
@@ -28,7 +29,21 @@ app.get('/',(req,res)=>{
     })
 })
 app.get('/about',(req,res)=>{
-    res.render('about')
+        requests(`https://api.openweathermap.org/data/2.5/weather?q=${req.query.name}&units=metric&appid=9f550b7171516cd607fb89fcd860a94f`)
+            .on('data', function (chunk) {
+                const objData = JSON.parse(chunk);
+                const arrayData = [objData];
+                console.log(` City = ${arrayData[0].name}, temp =  ${arrayData[0].main.temp}`);
+                // console.log(arrayData);
+                // const realTimeData = arrayData
+                // .map((val) => replaceVal(homeFile,val)).join("");
+                res.write(arrayData[0].name);
+                // console.log(realTimeData);
+            })
+            .on('end', function (err) {
+                if (err) return console.log('connection closed due to errors', err);
+                res.end();
+            });
 })
 app.get('/contact',(req,res)=>{
     res.render('contact')
